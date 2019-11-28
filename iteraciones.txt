@@ -12,6 +12,47 @@ $ npm install
 $ npm run start
 
 --------------------
+8. Peticiones
+---------------------
+Post
+{
+	"nick":"Miguel",
+    "mensaje":"Este es un mensaje"
+}
+
+Get
+localhost:3000/mensajes?id=1
+localhost:3000/mensajes/
+
+Put
+localhost:3000/mensajes/1
+{
+	"nick":"Miguel 2",
+    "mensaje":"Este es un mensaje 2"
+}
+
+Delete
+localhost:3000/mensajes/1
+
+-
+7. Provider
+--------------------
+https://docs.nestjs.com/providers
+
+
+-------------
+6. repositorio y proveedores
+---------------------------
+https://docs.nestjs.com/cli/usages
+nest g service mensajes
+
+--------------------
+5. Declaración de entidades
+-----------------------------
+nest g class mensajes/mensaje
+
+
+--------------------
 4. Conexión a base de datos
 -----------------------------
 https://docs.nestjs.com/techniques/database

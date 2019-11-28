@@ -9,13 +9,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const cats_controller_1 = require("./cats/cats.controller");
+const mensajes_controller_1 = require("./mensajes/mensajes.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const mensaje_entity_1 = require("./mensajes/entities/mensaje.entity");
+const mensajes_service_1 = require("./mensajes/mensajes.service");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        imports: [
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'mysql',
+                host: 'localhost',
+                port: 3306,
+                username: 'nest',
+                password: 'app',
+                database: 'sendmeanapp_db',
+                entities: [mensaje_entity_1.Mensaje],
+                synchronize: true,
+            }),
+            typeorm_1.TypeOrmModule.forFeature([mensaje_entity_1.Mensaje])
+        ],
+        controllers: [app_controller_1.AppController, cats_controller_1.CatsController, mensajes_controller_1.MensajesController],
+        providers: [app_service_1.AppService, mensajes_service_1.MensajesService],
     })
 ], AppModule);
 exports.AppModule = AppModule;
